@@ -24,10 +24,20 @@ const router = new Router({
 		 * 制作页面
 		 */
 		{
-			path: '/make/page',
+			path: '/make/page/:type/',
 			component:(resolve) => require(['@/entries/index/views/MakePage.vue'],resolve),
 			meta:{
 				title:"制作页面"
+			},
+		},
+		/**
+		 * banner编辑页面
+		 */
+		{
+			path: '/make/banner/:type/',
+			component:(resolve) => require(['@/entries/index/views/BannerPage.vue'],resolve),
+			meta:{
+				title:"制作Banner页面"
 			},
 		},
 		/**

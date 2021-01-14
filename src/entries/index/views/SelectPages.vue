@@ -6,7 +6,7 @@
         </comp-title>
         <!--    轮播-->
         <van-swipe :loop="false">
-            <van-swipe-item v-for="(image, index) in images" :key="index">
+            <van-swipe-item v-for="(image, index) in images" :key="index" @click="handleClick(index)">
                 <img v-lazy="image" style="width: 100%; height: 100%"/>
             </van-swipe-item>
         </van-swipe>
@@ -48,7 +48,13 @@ export default {
 
     },
     methods:{
-
+        /**
+         * 点击当前的轮播图
+         */
+        handleClick(index){
+            let vm = this;
+            vm.$router.push('/make/page');
+        }
     }
 }
 </script>
