@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<van-field
+            class="text-box"
 			readonly
 			clickable
 			:left-icon="form.required && !disabled && !form.disabled ? 'star': ''"
@@ -13,13 +14,13 @@
 			:disabled="disabled || form.disabled"
 		/>
 		<!-- 选择器 -->
-		<van-popup v-model="form.showPicker" position="bottom">
-		<van-picker
-			show-toolbar
-			:columns="form.options"
-			@confirm="onConfirmSeclect"
-			@cancel="form.showPicker = false"
-		/>
+		<van-popup v-model="form.showpicker" position="bottom">
+            <van-picker
+                show-toolbar
+                :columns="form.options"
+                @confirm="onConfirmSeclect"
+                @cancel="form.showpicker = false"
+            />
 		</van-popup>
 	</div>
 </template>
@@ -66,7 +67,7 @@
 				let vm = this;
 				vm.form.value = data.value;
 				vm.form._value = data.text;
-				vm.form.showPicker = false;
+				vm.form.showpicker = false;
 			},
 			/**
 			 * 点击下拉
@@ -74,7 +75,7 @@
 			handleClickSelect(form){
 				let vm = this;
 				if(vm.disabled || vm.form.disabled) return;
-				form.showPicker = true
+				form.showpicker = true
 			},
 		}
 	}
@@ -86,10 +87,23 @@
 		color: #ee0a24;
 		font-size: 12px;
 	}
-	// ::v-deep .van-field__control:disabled{
-	// 	color: #000000;
-	// }
+    .text-box{
+        border: #cecece solid 1px;
+        border-radius: 5px;
+    }
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 	::v-deep .van-uploader{
 		padding: 16px;
-	} 
+	}
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 </style>

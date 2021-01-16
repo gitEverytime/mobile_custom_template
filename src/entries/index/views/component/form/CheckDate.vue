@@ -182,15 +182,21 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../../assets/scss/minix";
-::v-deep .van-icon-star{
-  color: #ee0a24;
-  font-size: 12px;
-}
-// ::v-deep .van-field__control:disabled{
-// 	color: #000000;
-// }
-::v-deep .van-uploader{
-  padding: 16px;
-}
+    @import "../../../../../assets/scss/minix";
+    ::v-deep .van-icon-star{
+      color: #ee0a24;
+      font-size: 12px;
+    }
+    // ::v-deep .van-field__control:disabled{
+    // 	color: #000000;
+    // }
+    ::v-deep .van-uploader{
+      padding: 16px;
+    }
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 </style>

@@ -2,6 +2,7 @@
     <div
         class="comp_title title_fixed"
         id="comp_title title_fixed"
+        @click="$emit('onClickFoot')"
     >
         <!-- 导航 -->
         <van-nav-bar

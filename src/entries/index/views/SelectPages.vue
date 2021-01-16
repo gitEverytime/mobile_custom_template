@@ -53,7 +53,7 @@ export default {
          */
         handleClick(index){
             let vm = this;
-            vm.$router.push('/make/page');
+            vm.$router.push('/make/page/source1');
         }
     }
 }

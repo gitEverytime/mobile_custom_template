@@ -95,5 +95,11 @@
 	// }
 	::v-deep .van-uploader{
 		padding: 16px;
-	} 
+	}
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 </style>

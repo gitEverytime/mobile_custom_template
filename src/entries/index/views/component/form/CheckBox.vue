@@ -1,8 +1,9 @@
 <template>
 	<div>
 		<van-field
+            class="text-box"
 			name="checkboxGroup" 
-			:left-icon="form.required && !disabled && !form.disabled ? 'star': ''"
+			:left-icon="form.required && !form.disabled ? 'star': ''"
 			:label="form.name"
 			:name="String(form.tab)"
 			@click="handleClickCheckBox(index)"
@@ -10,19 +11,18 @@
 			:disabled="disabled"
 			>
 			<template #input>
-				<!-- isDictionary ? 字典模式 ：字符串模式 -->
 				<van-checkbox-group
 					v-model="form._value" 
 					direction="horizontal" 
 					@change="handleChangeCheckBox"
 				>
 					<van-checkbox 
-						v-for="checkBox in form.checkboxs"
+						v-for="checkBox in form.options"
 						:name="checkBox.value" 
 						icon-size="16px"
 						shape="square"
-						checked-color="#1e9fff"
-						:disabled="disabled"
+						:checked-color="$store.state.common_back_color"
+						:disabled="form.disabled"
 					>
 					{{checkBox.text}}
 					</van-checkbox>
@@ -97,10 +97,26 @@
 		color: #ee0a24;
 		font-size: 12px;
 	}
+    .text-box{
+        border: #cecece solid 1px;
+        border-radius: 5px;
+    }
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 	::v-deep .van-field__control:disabled{
 		color: #000000;
 	}
 	::v-deep .van-uploader{
 		padding: 16px;
-	} 
+	}
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 </style>

@@ -1,22 +1,23 @@
 <template>
-	<div v-if="form.type === 'date'">
+	<div>
 		<van-field
+            class="text-box"
 			readonly
 			clickable
-			:left-icon="form.required && !disabled && !form.disabled ? 'star': ''"
+			:left-icon="form.required && !form.disabled ? 'star': ''"
 			name="calendar"
 			v-model="form.value"
 			:label="form.name"
 			:name="String(form.tab)"
-			:placeholder="!disabled ? '点击选择'+form.name : ''"
+			:placeholder="!form.disabled ? '点击选择'+form.name : ''"
 			:rules="[{ required: form.required, message: '请点击选择'+form.name }]"
 			@click="handleClickDate(index)"
-			:disabled="disabled || form.disabled"
+			:disabled="form.disabled"
 		/>
 		<!-- 时间选择器 -->
 		<van-calendar 
-			v-model="form.showCalendar" 
-			color="#1e9fff" 
+			v-model="form.showcalendar"
+			:color="$store.state.common_back_color"
 			:min-date="minDate"
 			:max-date="maxDate"
 			@confirm="onConfirmDate" 
@@ -72,7 +73,7 @@
 			handleClickDate(){
 				let vm = this;
 				if(vm.disabled || vm.form.disabled) return;
-				vm.form.showCalendar = true;
+				vm.form.showcalendar = true;
 			},
 			/**
 			 * 日期选择完成
@@ -84,7 +85,7 @@
 				date.getMonth() + 1 <= 9 ? month = `0${date.getMonth() + 1}` : month = `${date.getMonth() + 1}`;
 				date.getDate() + 1 <= 10 ? day = `0${date.getDate()}` : day = `${date.getDate()}`;
 				vm.form.value = `${date.getFullYear()}-${month}-${day}`;
-				vm.form.showCalendar = false;
+				vm.form.showcalendar = false;
 			},
 		}
 	}
@@ -96,10 +97,23 @@
 		color: #ee0a24;
 		font-size: 12px;
 	}
-	// ::v-deep .van-field__control:disabled{
-	// 	color: #000000;
-	// }
+    .text-box{
+        border: #cecece solid 1px;
+        border-radius: 5px;
+    }
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 	::v-deep .van-uploader{
 		padding: 16px;
-	} 
+	}
+    ::v-deep .van-cell{
+        padding: 6px 10px;
+    }
+    ::v-deep .van-field__label{
+        border-right: #cecece solid 1px;
+    }
 </style>

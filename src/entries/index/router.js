@@ -41,8 +41,25 @@ const router = new Router({
 			},
 		},
 		/**
+		 * title编辑页面
+		 */
+		{
+			path: '/title/banner/:type/:index',
+			component:(resolve) => require(['@/entries/index/views/TitlePage.vue'],resolve),
+			meta:{
+				title:"制作title页面"
+			},
+		},
+		/**
 		 * 选择组件
 		 */
+		{
+			path: '/choose/comp/:type/:index',
+			component:(resolve) => require(['@/entries/index/views/ChooseComp.vue'],resolve),
+			meta:{
+				title:"选择组件"
+			},
+		},
 	]
 });
 /**
