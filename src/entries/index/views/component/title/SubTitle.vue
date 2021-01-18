@@ -11,6 +11,7 @@
                 placeholder="请您输入主标题"
                 class="van-field__control"
                 v-model="title.text"
+                :readonly="$route.params['status'] !== '2' ? 'readonly' : ''"
                 :style="{
                     color:title.color,
                     fontWeight: title.isbold ? 'bold' : '400'
@@ -51,7 +52,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.van-field__control{
-    text-align: center;
-}
+    .van-field__control{
+        text-align: center;
+    }
+    input::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: #999999;
+    }
+    input:-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #999999;
+    }
+    input::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #999999;
+    }
+    input:-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #999999;
+    }
 </style>

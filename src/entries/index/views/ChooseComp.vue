@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import CompTitle from './component/Title.vue'
-import CompFoot from './component/Foot.vue'
+import CompTitle from './component/head/Head.vue'
+import CompFoot from './component/foot/Foot.vue'
 import CompList from './component/list/List.vue'
 import page from "@/entries/index/js/page";
 export default {
@@ -64,7 +64,10 @@ export default {
              * add form of array
              */
             vm.result.value.forEach((res) => {
-                vm.page.form_data.push(JSON.parse(res));
+                let obj = JSON.parse(res);
+                obj['disabled'] = false;
+                obj['readonly'] = false;
+                vm.page.form_data.push(obj);
             })
             /**
              * back

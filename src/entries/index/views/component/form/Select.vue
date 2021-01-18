@@ -1,17 +1,17 @@
 <template>
-	<div>
+    <div class="text-box">
+        <van-field v-model="form.name" class="text-left" label="" :readonly="form.readonly"  />
 		<van-field
-            class="text-box"
-			readonly
-			clickable
+            :readonly="form.readonly"
+            clickable
 			:left-icon="form.required && !disabled && !form.disabled ? 'star': ''"
 			v-model="form._value"
-		   :label="form.name"
-		   :name="String(form.tab)"
-		   :placeholder="!disabled ? '点击选择'+form.name :''"
-		   :rules="[{ required: form.required, message: '请点击选择'+form.name }]"
+		    label=""
+		    :name="String(form.tab)"
+		    :placeholder="!form.disabled ? '点击选择'+form.name :''"
+		    :rules="[{ required: form.required, message: '请点击选择'+form.name }]"
 			@click="handleClickSelect(form)"
-			:disabled="disabled || form.disabled"
+			:disabled="$route.params.status === '1' || form.disabled"
 		/>
 		<!-- 选择器 -->
 		<van-popup v-model="form.showpicker" position="bottom">
@@ -22,21 +22,29 @@
                 @cancel="form.showpicker = false"
             />
 		</van-popup>
+        <div class="clear-form-btn" v-if="$route.params.status === '0'"  @click="handleClickClear">
+            <van-icon name="clear"/>
+        </div>
 	</div>
 </template>
 <script>
-	export default{
+	import page from "@/entries/index/js/page";
+
+    export default{
 		props:{
 			form:Object,
-			disabled:Boolean,
-			formData:Object,
-			index:Number
+            index:{
+                type:Number
+            }
 		},
-		data(){
-			return{
-				
-			}
-		},
+        data(){
+            let vm = this;
+            return{
+                text:'',
+                readonly:false,
+                form_data:page[`${vm.$route.params.type}`].form_data,
+            }
+        },
 		created() {
 			
 		},
@@ -45,6 +53,13 @@
 			if(vm.form.enumops) vm.getSelectList(vm.form.enumops);
 		},
 		methods:{
+            /**
+             * 删除
+             */
+            handleClickClear(){
+                let vm = this;
+                vm.form_data.splice(vm.index,1);
+            },
 			/**
 			 * 列表获取
 			 */
@@ -74,7 +89,7 @@
 			 */
 			handleClickSelect(form){
 				let vm = this;
-				if(vm.disabled || vm.form.disabled) return;
+				if(vm.form.readonly) return;
 				form.showpicker = true
 			},
 		}
@@ -88,22 +103,29 @@
 		font-size: 12px;
 	}
     .text-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
         border: #cecece solid 1px;
         border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .text-left{
+            width: 10.2em;
+            border-right: #cecece solid 1px;
+        }
+        .clear-form-btn{
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            z-index: 100;
+        }
     }
     ::v-deep .van-cell{
         padding: 6px 10px;
-    }
-    ::v-deep .van-field__label{
-        border-right: #cecece solid 1px;
     }
 	::v-deep .van-uploader{
 		padding: 16px;
 	}
-    ::v-deep .van-cell{
-        padding: 6px 10px;
-    }
-    ::v-deep .van-field__label{
-        border-right: #cecece solid 1px;
-    }
 </style>

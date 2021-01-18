@@ -27,18 +27,20 @@ const source = {
      */
     title_data:[
         {
-            text:'点击输入主标题',
+            text:'',
             type:'main',
             fontsize:'18',
             color:'#666666',
             isbold:true,
+            placeholder:'点击输入主标题',
             paddingtop:30
         },
         {
-            text:'点击输入副标题',
+            text:'',
             type:'sub',
             fontsize:'14',
             color:'#999999',
+            placeholder:'点击输入副标题',
             isbold:false,
             paddingtop:15
 
@@ -51,6 +53,7 @@ const source = {
         background_pic_id:'',
         type:''
     },
+
     /**
      * 表单 数据源
      */
@@ -60,6 +63,12 @@ const source = {
         }
 
     ],
+    /**
+     * 提交按钮 数据源
+     */
+    submit_data:{
+        text:'保存'
+    },
     forms:[
         {
             name:'文本框',
@@ -72,7 +81,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -88,7 +97,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -104,7 +113,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -120,7 +129,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -136,7 +145,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -156,7 +165,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -172,7 +181,7 @@ const source = {
             placeholder:'',
             border:false,
             bordercolor:'#999999',
-            readonly:false,
+            readonly:true,
             autofocus:false,
             autosize:false,
             size:'',
@@ -195,6 +204,7 @@ const source = {
             disabled:true,
             placeholder:'',
             border:false,
+            readonly:true,
             bordercolor:'#999999',
             size:'',
             enumops:'',
@@ -219,6 +229,7 @@ const source = {
             disabled:true,
             placeholder:'',
             border:false,
+            readonly:true,
             bordercolor:'#999999',
             size:'',
             enumops:'',
@@ -240,6 +251,7 @@ const source = {
             mold:'multi',
             value:'',
             _value:[],
+            readonly:true,
             multiple:false,  //是否开启多传
             count:'10',  //最大上传数量
             uploader:[],

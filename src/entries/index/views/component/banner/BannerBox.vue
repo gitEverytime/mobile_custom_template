@@ -10,7 +10,7 @@
     >
         <comp-banner v-if="banner_data['type'] === 'banner1'" :banner_data="banner_data">
         </comp-banner>
-        Banner(点击编辑)
+        <label v-if="$route.params['status'] !== '2'"> Banner(点击编辑)</label>
     </div>
 </template>
 

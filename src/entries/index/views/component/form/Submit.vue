@@ -1,19 +1,22 @@
 <template>
     <van-button
-        icon="plus"
-        v-if="$route.params['status'] !== '2'"
         round
-        plain
         block
         :style="{
             marginTop:'12px'
         }"
         type="info"
+        readonly
         native-type="submit"
         :color="$store.state.common_back_color"
         @click="handleClickAdd"
     >
-        添加表单元素
+        <input
+            type="text"
+            name="username"
+            class="van-field__control"
+            v-model="submit_data.text"
+        >
     </van-button>
 </template>
 
@@ -23,8 +26,15 @@ export default {
     components:{
 
     },
+    props:{
+        submit_data:{
+            type:Object
+        }
+    },
     data(){
-        return{}
+        return{
+
+        }
     },
     created() {
     },
@@ -36,7 +46,8 @@ export default {
          */
         handleClickAdd(){
             let vm = this;
-            vm.$router.push(`/choose/comp/${vm.$route.params.type}/1/1`)
+            // if(vm.$route.params['status'] === '0') return;
+            // vm.$router.push(`/choose/comp/${vm.$route.params.type}/1/1`)
         }
     },
     beforeDestroy() {
@@ -44,6 +55,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    .van-field__control{
+        text-align: center;
+        color: #FFFFFF;
+    }
 </style>

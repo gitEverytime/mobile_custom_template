@@ -11,8 +11,8 @@
 
 <script>
 import page from '../js/page.js'
-import CompTitle from './component/Title.vue'
-import CompFoot from './component/Foot.vue'
+import CompTitle from './component/head/Head.vue'
+import CompFoot from './component/foot/Foot.vue'
 export default {
     name: "TitlePage",
     components:{

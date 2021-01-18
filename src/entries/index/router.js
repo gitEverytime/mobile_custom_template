@@ -24,7 +24,7 @@ const router = new Router({
 		 * 制作页面
 		 */
 		{
-			path: '/make/page/:type/',
+			path: '/make/page/:type/:status',
 			component:(resolve) => require(['@/entries/index/views/MakePage.vue'],resolve),
 			meta:{
 				title:"制作页面"
@@ -54,12 +54,22 @@ const router = new Router({
 		 * 选择组件
 		 */
 		{
-			path: '/choose/comp/:type/:index',
+			path: '/choose/comp/:type/:index/:status',
 			component:(resolve) => require(['@/entries/index/views/ChooseComp.vue'],resolve),
 			meta:{
 				title:"选择组件"
 			},
 		},
+		/**
+		 * 预览页面
+		 */
+		{
+			path: '/preview/page/:type/:index/:status',
+			component:(resolve) => require(['@/entries/index/views/PreviewPage.vue'],resolve),
+			meta:{
+				title:"选择组件"
+			},
+		}
 	]
 });
 /**

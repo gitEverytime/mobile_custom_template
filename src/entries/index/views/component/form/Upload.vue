@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <div class="text-box">
+        <van-field v-model="form.name" class="text-left" label="" :readonly="form.readonly" />
         <van-field
-            class="text-box"
+            class="text-right"
             name="uploader"
-            :label="form.name || ''"
+            label=""
             :name="String(form.tab)"
             :disabled="form.disabled"
         >
@@ -22,21 +23,30 @@
                 />
             </template>
         </van-field>
+        <div class="clear-form-btn" v-if="$route.params.status === '0'"  @click="handleClickClear">
+            <van-icon name="clear"/>
+        </div>
     </div>
 </template>
 
 <script>
 	import axios from 'axios'
+    import page from "@/entries/index/js/page";
 	export default {
 		components:{
 		},
 		props:{
-			form:Object
+			form:Object,
+            index:{
+                type:Number
+            }
 		},
 		data(){
             const isAndroid = /android/.test(navigator.userAgent.toLowerCase());
+            let vm = this;
 			return{
                 capture: isAndroid ? 'camera' : null,
+                form_data:page[`${vm.$route.params.type}`].form_data,
 			}
 		},
         computed:{
@@ -55,10 +65,12 @@
 			let vm = this;
 		},
 		methods:{
-            handleClickShowDoc(arr){
+            /**
+             * 删除
+             */
+            handleClickClear(){
                 let vm = this;
-                vm.showPopupWord = true;
-                vm.id = arr.id;
+                vm.form_data.splice(vm.index,1);
             },
             /**
              * 删除
@@ -148,14 +160,29 @@
 <style lang="scss" scoped>
     @import "../../../../../assets/scss/minix";
     .text-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
         border: #cecece solid 1px;
         border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        .text-left{
+            width: 10.2em;
+        }
+        .text-right{
+            border-left: #cecece solid 1px;
+        }
+        .clear-form-btn{
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            z-index: 100;
+        }
     }
     ::v-deep .van-cell{
         padding: 6px 10px;
-    }
-    ::v-deep .van-field__label{
-        border-right: #cecece solid 1px;
     }
     .wrapper {
       display: flex;
@@ -210,11 +237,4 @@
         z-index: 99;
       }
     }
-    ::v-deep .van-cell{
-        padding: 6px 10px;
-    }
-    ::v-deep .van-field__label{
-        border-right: #cecece solid 1px;
-    }
-
 </style>

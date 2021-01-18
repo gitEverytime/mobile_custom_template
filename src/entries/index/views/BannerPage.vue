@@ -110,8 +110,8 @@
 <script>
 import page from '../js/page.js'
 import CompBannerBox from "./component/banner/BannerBox";
-import CompTitle from './component/Title.vue'
-import CompFoot from './component/Foot.vue'
+import CompTitle from './component/head/Head.vue'
+import CompFoot from './component/foot/Foot.vue'
 import axios from 'axios'
 export default {
     name: "BannerPage",

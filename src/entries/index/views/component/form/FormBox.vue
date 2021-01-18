@@ -6,9 +6,11 @@
             padding:$store.state.form_padding_left_right + 'px'
         }"
     >
-        <div v-for="form in form_data"  style="padding-bottom: 15px">
-            <comp-comp-list :form="form"></comp-comp-list>
+        <div v-for="(form,index) in form_data"  style="padding-bottom: 15px">
+            <comp-comp-list :form="form" :index="index"></comp-comp-list>
         </div>
+        <!--  Submit-->
+        <comp-submit :submit_data="submit_data"></comp-submit>
         <!--  ADD-->
         <comp-add></comp-add>
     </van-form>
@@ -16,17 +18,22 @@
 
 <script>
 import CompAdd from './Add.vue'
+import CompSubmit from './Submit.vue'
 import CompCompList from "@/entries/index/views/component/form/CompList";
 
 export default {
     name: "FormBox",
     components:{
         CompAdd,
-        CompCompList
+        CompCompList,
+        CompSubmit
     },
     props:{
         form_data:{
             type:Array
+        },
+        submit_data:{
+            type:Object
         }
     },
     data(){

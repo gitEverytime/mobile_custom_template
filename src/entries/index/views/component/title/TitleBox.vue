@@ -54,16 +54,16 @@ export default {
          * 双击进入编辑
          */
         handleClickTitle(title,index){
-            let vm = this;
-            vm.i ++;
-            setTimeout( ()=> {
-                vm.i = 0;
-            }, 500);
-            if (vm.i > 1) {
-                vm.popupData = title;
-                vm.popupStatus.show = true;
-                vm.i = 0;
-            }
+            // let vm = this;
+            // vm.i ++;
+            // setTimeout( ()=> {
+            //     vm.i = 0;
+            // }, 500);
+            // if (vm.i > 1) {
+            //     vm.popupData = title;
+            //     vm.popupStatus.show = true;
+            //     vm.i = 0;
+            // }
         }
     },
     beforeDestroy() {

@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import CompTitle from './component/Title.vue'
-import CompFoot from './component/Foot.vue'
+import CompTitle from './component/head/Head.vue'
+import CompFoot from './component/foot/Foot.vue'
 export default {
     name: "SelectPages",
     components: {
@@ -53,7 +53,7 @@ export default {
          */
         handleClick(index){
             let vm = this;
-            vm.$router.push('/make/page/source1');
+            vm.$router.push('/make/page/source1/0');
         }
     }
 }
